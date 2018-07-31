@@ -13,10 +13,8 @@ function createAccLink(data, map){
 	//Цикл не убирать, иначе отвалится событие на каждом отдельном адресе
 	for (let i = 0; i < data.brandData.length; i++) {
 		const brand = createBrand (data.brandData[i], data.brandName, collection);
-		console.log('brand ', brand);
 		brands.appendChild(brand);
 	}
-	console.log('brands ', brands);
 	
 	//Создаем элемент для логотипа бренда
 	const brandLogo = document.createElement('div');
@@ -44,12 +42,24 @@ function createAccLink(data, map){
 	//Создаем элемент для графика работы
 	const brandSchedule = document.createElement('p');
 	brandSchedule.className = 'BigBrand-Schedule';
-	brandSchedule.innerHTML = `<p class="BigBrand-Schedule_Caption">График работы</p><p class="BigBrand-Schedule_Data">${data.brandSchedule}</p>`;
+	brandSchedule.innerHTML = `<p class="BigBrand-Schedule_Caption">График работы</p>`;
+	//Добавляем графики работы в созданный элемент
+	const scheduleMass = data.brandSchedule.split('|');
+	for (let i = 0; i < scheduleMass.length; i++) {
+		brandSchedule.appendChild(scheduleCreate(scheduleMass[i]))
+	}
+	
 	
 	//Создаем элемент для телефонов
 	const brandPhone = document.createElement('p');
 	brandPhone.className = 'BigBrand-Phone';
-	brandPhone.innerHTML = `<p class="BigBrand-Phone_Caption">Телефон</p><p class="BigBrand-Phone_Data">${data.brandPhone}</p>`;
+	brandPhone.innerHTML = `<p class="BigBrand-Phone_Caption">Телефон</p>`;
+	//Добовляем телефоны в созданный элемент
+	let phoneMass = data.brandPhone.split('|');
+	for (let i = 0; i < phoneMass.length; i++) {
+		brandPhone.appendChild(phoneCreate(phoneMass[i]));
+	}
+	
 	
 	//Создаем элемент для линка с указание количества магазинов
 	const brandLink = document.createElement('a');
@@ -85,8 +95,6 @@ function createAccLink(data, map){
 
 
 function createBrand (data, brandName, collection) {
-	console.log('data ', data);
-
 	//Создаем обортку для адресов в бренде
 	let brandWrap = document.createElement('div');
 	brandWrap.className = 'Brand';
@@ -112,14 +120,11 @@ function createBrand (data, brandName, collection) {
 	brandWrap.appendChild(brandPhone);
 	brandWrap.appendChild(brandSchedule);
 	
-	console.log('brandWrap ', brandWrap);
-	
 	//Разбираем и приводим к числам координаты магазина
 	let coordinates = data.coordinates.split(',');
 	for (let i = 0; i < coordinates.length; i++) {
 		coordinates[i] = Number(coordinates[i]);
 	}
-	console.log('coordinates ', coordinates);
 	
 	let placemark = new ymaps.Placemark(
 		coordinates,
@@ -137,20 +142,41 @@ function createBrand (data, brandName, collection) {
 			hideIconOnBalloonOpen: false
 		}
 	);
-	console.log('placemark ', placemark);
+	
 	brandAddress.addEventListener('mouseenter', function () {
-		placemark.options.iconImageSize = [20,20];
 		placemark.balloon.open();
 	});
+	brandAddress.addEventListener('mouseleave', function () {
+		placemark.balloon.close();
+	});
+	placemark.events
+		.add('mouseenter', ()=> {
+			brandWrap.style.backgroundColor = '#f2f2f2';
+		})
+		.add('mouseleave', ()=>{
+			brandWrap.style.backgroundColor = 'transparent';
+		});
+	
 	
 	collection.add(placemark);
 	return brandWrap;
 }
 
+function phoneCreate (phone) {
+	const phoneElement = document.createElement('p');
+	phoneElement.className = 'BigBrand-Phone_Data';
+	phoneElement.innerText += phone;
+	return phoneElement;
+}
+function scheduleCreate (schedule) {
+	const phoneElement = document.createElement('p');
+	phoneElement.className = 'BigBrand-Schedule_Data';
+	phoneElement.innerText += schedule;
+	return phoneElement;
+}
+
 function createMap(){
-	console.group(`Function map init load`);
-	
-	//Получение данных для обработки
+		//Получение данных для обработки
 	$.getJSON('MapSource.json', (dataMap) => {
 		//Получем элемент, где будут находяться элементы управления картой
 		const mapInfo = document.getElementById('DescMap');
