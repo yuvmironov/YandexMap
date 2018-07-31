@@ -1,0 +1,103 @@
+{
+	"city": "Москва",
+	"brands" : [
+		{
+			"brandName": "Доброта",
+			"brandAddress": "ул. Угличская, д. 16",
+			"brandPhone": "+7 (495) 125-43-78 доб. 114 | +7 (495) 531-33-05",
+			"brandSchedule": " пн-пт с 9:00 до 17:30 в будние дни",
+			"brandLogo": "https://www.dobrota.ru/phpshop/templates/dobrota/images/dobrota.gif",
+			"brandData": [
+				{
+					"address" : "Ул. Вешняковская, 22А, ТЦ",
+					"coordinates" : "55.720372,37.822074",
+					"primoryPhone" : "+7 (495) 125-43-78 доб. 183",
+					"primoryShedule" : "с 10:00 до 21:00 без выходных",
+					"additionalInformation" : [
+						{
+							"addName" : "",
+							"addPhone" : "",
+							"addShedule" : "",
+							"addEmail" : ""
+						}
+					],
+					"howToGetThere" : [
+						{
+							"howMethod" : "",
+							"howDesc" : ""
+						}
+					]
+				},
+				{
+					"address" : "Пролетарский проспект д. 20, к 1.",
+					"coordinates" : "55.633612,37.657377",
+					"primoryPhone" : "+7 (495) 125-43-78 доб. 193",
+					"primoryShedule" : "с 10:00 до 21:00 без выходных",
+					"additionalInformation" : [
+						{
+							"addName" : "",
+							"addPhone" : "",
+							"addShedule" : "",
+							"addEmail" : ""
+						}
+					],
+					"howToGetThere" : [
+						{
+							"howMethod" : "",
+							"howDesc" : ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"brandName": "Экомедика",
+			"brandAddress": "ул.Широкая, д.10 к.2.",
+			"brandPhone": " 8 (495) 963-70-52 |  8 (495) 963-70-54",
+			"brandSchedule": "",
+			"brandLogo": "https://www.ecomedika.ru/assets/logo.png",
+			"brandData": [
+				{
+					"address" : "ул.Ярцевская д. 32",
+					"coordinates" : "55.741323,37.417733",
+					"primoryPhone" : "8 (495) 532-71-01",
+					"primoryShedule" : "",
+					"additionalInformation" : [
+						{
+							"addName" : "",
+							"addPhone" : "",
+							"addShedule" : "",
+							"addEmail" : ""
+						}
+					],
+					"howToGetThere" : [
+						{
+							"howMethod" : "",
+							"howDesc" : ""
+						}
+					]
+				},
+				{
+					"address" : "ул. Большие Каменщики д.6 стр.1",
+					"coordinates" : "55.736093,37.655032",
+					"primoryPhone" : "8 (495) 532-71-01",
+					"primoryShedule" : "",
+					"additionalInformation" : [
+						{
+							"addName" : "",
+							"addPhone" : "",
+							"addShedule" : "",
+							"addEmail" : ""
+						}
+					],
+					"howToGetThere" : [
+						{
+							"howMethod" : "",
+							"howDesc" : ""
+						}
+					]
+				}
+			]
+		}
+	]
+}
