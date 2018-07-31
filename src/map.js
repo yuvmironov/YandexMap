@@ -1,12 +1,18 @@
 ymaps.ready(createMap);
 
+/**
+ * Функция построения елемента с одинм брэндом
+ * @param data - объект с данными
+ * @param map - карта
+ * @return {HTMLDivElement} элемент для вставки в дом
+ */
 function createAccLink(data, map){
 	let collection = new ymaps.GeoObjectCollection(null, {});
 	let innerData = document.createElement('div');
 	innerData.classList.add('Accord-Element', 'BigBrand-Wrap');
 	
 	
-	//Создаем обортку для адресов в бренде
+	//Создаем обёртку для адресов в бренде
 	let brands = document.createElement('div');
 	brands.classList.add('Brands', 'Accord-Content');
 	
@@ -21,7 +27,7 @@ function createAccLink(data, map){
 	brandLogo.className = 'BigBrand-Logo';
 	brandLogo.style.backgroundImage = `url(${data.brandLogo})`;
 	
-	//Создаем обертку для информации о бренде
+	//Создаем обёртку для информации о бренде
 	const brandInfo = document.createElement('div');
 	brandInfo.className = 'BigBrand-Info';
 	
@@ -30,12 +36,12 @@ function createAccLink(data, map){
 	brandName.className = 'BigBrand-Name';
 	brandName.innerText = data.brandName;
 	
-	//Создаем обертку для основного адреса бренда
+	//Создаем обёртку для основного адреса бренда
 	const brandAddress = document.createElement('p');
 	brandAddress.className = 'BigBrand-Address';
 	brandAddress.innerText = data.brandAddress;
 	
-	//Создаем элемент для оберки телефонов и графика работы
+	//Создаем элемент для обёртки телефонов и графика работы
 	const phoneWrap = document.createElement('div');
 	phoneWrap.className = 'BigBrand-Phone_Wrap';
 	
@@ -93,7 +99,13 @@ function createAccLink(data, map){
 	return innerData;
 }
 
-
+/**
+ * Функция построения дополнительных адресов для бренда
+ * @param data - данные по адресу
+ * @param brandName - имя бренда
+ * @param collection - коллекция для добавления метки
+ * @return {HTMLDivElement} - элемент для вставки в дом
+ */
 function createBrand (data, brandName, collection) {
 	//Создаем обортку для адресов в бренде
 	let brandWrap = document.createElement('div');
@@ -162,12 +174,23 @@ function createBrand (data, brandName, collection) {
 	return brandWrap;
 }
 
+/**
+ * Функция построения элемента телефона
+ * @param phone - номер телефона для вставки
+ * @return {HTMLParagraphElement} - элемент для вставки в дом
+ */
 function phoneCreate (phone) {
 	const phoneElement = document.createElement('p');
 	phoneElement.className = 'BigBrand-Phone_Data';
 	phoneElement.innerText += phone;
 	return phoneElement;
 }
+
+/**
+ * Функция построения элемента графика работы
+ * @param schedule - строка с графиком работы для вставки
+ * @return {HTMLParagraphElement} - элемент для вставки в дом
+ */
 function scheduleCreate (schedule) {
 	const phoneElement = document.createElement('p');
 	phoneElement.className = 'BigBrand-Schedule_Data';
@@ -175,6 +198,9 @@ function scheduleCreate (schedule) {
 	return phoneElement;
 }
 
+/**
+ * Функция инициализации и построения карты
+ */
 function createMap(){
 		//Получение данных для обработки
 	$.getJSON('MapSource.json', (dataMap) => {
