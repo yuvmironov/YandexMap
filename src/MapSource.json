@@ -3,7 +3,7 @@
 	"brands" : [
 		{
 			"brandName": "Доброта",
-			"brandAddress": "ул. Угличская, д. 16",
+			"brandAddress": "",
 			"brandPhone": "+7 (495) 125-43-78 доб. 114 | +7 (495) 531-33-05",
 			"brandSchedule": " пн-пт с 9:00 до 17:30 в будние дни",
 			"brandLogo": "https://www.dobrota.ru/phpshop/templates/dobrota/images/dobrota.gif",
@@ -52,7 +52,7 @@
 		},
 		{
 			"brandName": "Экомедика",
-			"brandAddress": "ул.Широкая, д.10 к.2.",
+			"brandAddress": "",
 			"brandPhone": " 8 (495) 963-70-52 |  8 (495) 963-70-54",
 			"brandSchedule": "",
 			"brandLogo": "https://www.ecomedika.ru/assets/logo.png",

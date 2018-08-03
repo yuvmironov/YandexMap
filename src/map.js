@@ -149,8 +149,8 @@ function createBrand (data, brandName, collection) {
 		{
 			iconLayout: 'default#image',
 			iconImageHref: 'Item.svg',
-			iconImageSize: [15,15],
-			iconImageOffset: [-7,-7],
+			iconImageSize: [35,35],
+			iconImageOffset: [-17,-17],
 			hideIconOnBalloonOpen: false
 		}
 	);
